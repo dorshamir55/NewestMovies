@@ -21,7 +21,7 @@ import java.util.List;
 public class MoviesAdapter extends RecyclerView.Adapter<MoviesAdapter.ViewHolder> {
     private List<Movies> moviesList;
     private MyMoviesListener listener;
-
+    final String BASE_URL_IMAGE = "https://image.tmdb.org/t/p/original/";
 
     public MoviesAdapter() {
 
@@ -75,7 +75,7 @@ public class MoviesAdapter extends RecyclerView.Adapter<MoviesAdapter.ViewHolder
         assert moviesList != null;
         Movies movie = moviesList.get(position);
         holder.titleTv.setText(movie.getTitle());
-        Picasso.get().load(movie.getPoster_path()).resize(400,275).into(holder.imageIv);
+        Picasso.get().load(BASE_URL_IMAGE+movie.getPoster_path()).into(holder.imageIv);
         holder.overViewTv.setText(movie.getOverView());
 
     }

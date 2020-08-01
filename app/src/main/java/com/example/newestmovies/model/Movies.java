@@ -12,7 +12,7 @@ public class Movies {
     private String backdrop_path;
     private String original_language;
     private String original_title;
-    private Genre_ids genre_ids;
+    private String[] genre_ids;
     @SerializedName("title")
     private String title;
     private String vote_average;
@@ -92,11 +92,11 @@ public class Movies {
         this.original_title = original_title;
     }
 
-    public Genre_ids getGenre_ids() {
+    public String[] getGenre_ids() {
         return genre_ids;
     }
 
-    public void setGenre_ids(Genre_ids genre_ids) {
+    public void setGenre_ids(String[] genre_ids) {
         this.genre_ids = genre_ids;
     }
 

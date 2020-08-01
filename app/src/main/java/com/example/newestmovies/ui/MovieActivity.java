@@ -11,7 +11,7 @@ import com.bumptech.glide.Glide;
 import com.example.newestmovies.R;
 
 public class MovieActivity extends AppCompatActivity {
-    String BaseUrl = "";
+    String BASE_URL_IMAGE = "https://image.tmdb.org/t/p/original/";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,7 +27,7 @@ public class MovieActivity extends AppCompatActivity {
         TextView overViewTV = findViewById(R.id.overview_moviePage);
 
         Glide.with(this)
-                .load(Uri.parse(BaseUrl+imagePath))
+                .load(Uri.parse(BASE_URL_IMAGE+imagePath))
                 .into(imageIV);
 
         titleTV.setText(title);

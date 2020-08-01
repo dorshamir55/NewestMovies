@@ -31,18 +31,18 @@ public class MainRepository implements IMainRepository{
     @Override
     public void getMoviesLiveData(String apiKey, String language, String page) {
         APIInterface apiInterface = APIClient.getRetrofitInstance().create(APIInterface.class);
-        Call<MainPojo> call= apiInterface.getAllMovies(apiKey, language,page);
+        Call<MainPojo> call = apiInterface.getAllMovies(apiKey, language,page);
 
         call.enqueue(new Callback<MainPojo>() {
             @Override
-            public void onResponse(Call<MainPojo> call, Response<MainPojo> response) {
+            public void onResponse(Call<MainPojo> call, retrofit2.Response<MainPojo> response) {
                 movies.setValue(Arrays.asList(response.body().getMovies()));
             }
 
             @Override
             public void onFailure(Call<MainPojo> call, Throwable t) {
                 movies.setValue(null);
-                Toast.makeText(context, "Something went wrong...Please try later!", Toast.LENGTH_SHORT).show();
+                Toast.makeText(context, t.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
     }
