@@ -50,6 +50,6 @@ public class MainActivity extends AppCompatActivity {
                 moviesAdapter.setData(movies);
                 moviesAdapter.notifyDataSetChanged();
         });
-        viewModel.getMoviesLiveData("8e0287bdf8f164cb10683aba2e728f5c", "he-IL", "1");
+        viewModel.getMoviesLiveData("8e0287bdf8f164cb10683aba2e728f5c", "en-US", "1");
     }
 }

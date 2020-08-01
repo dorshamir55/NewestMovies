@@ -18,15 +18,14 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:textSize="20sp"
+            android:textSize="28sp"
             android:textStyle="bold"
             android:layout_margin="10dp"
             android:text="title"/>
 
         <ImageView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
+            android:layout_height="500dp"
             android:id="@+id/image_cell"/>
 
         <TextView
@@ -35,7 +34,7 @@
             android:layout_height="wrap_content"
             android:gravity="center"
             android:textSize="14sp"
-            android:layout_margin="5dp"
+            android:layout_margin="10dp"
             android:text="overview"/>
     </LinearLayout>
 </com.skydoves.elasticviews.ElasticCardView>
