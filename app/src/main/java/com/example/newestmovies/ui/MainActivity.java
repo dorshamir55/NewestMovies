@@ -13,14 +13,14 @@ import android.view.View;
 import com.example.newestmovies.R;
 import com.example.newestmovies.adapter.MoviesAdapter;
 import com.example.newestmovies.model.Movies;
+import com.example.newestmovies.viewmodel.IMainViewModel;
 import com.example.newestmovies.viewmodel.MainViewModel;
 
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
-    private MainViewModel viewModel;
+    private IMainViewModel viewModel;
     MoviesAdapter moviesAdapter = new MoviesAdapter();
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,11 +36,14 @@ public class MainActivity extends AppCompatActivity {
 
         moviesAdapter.setListener(new MoviesAdapter.MyMoviesListener() {
             @Override
-            public void onMovieClicked(int position, View view) {
+            public void onMovieClicked(String title, String imagePath, String overView, View view) {
                 Intent intent = new Intent(MainActivity.this, MovieActivity.class);
-                intent.putExtra("position", position);
+                intent.putExtra("title", title);
+                intent.putExtra("image_path", imagePath);
+                intent.putExtra("over_view", overView);
                 startActivity(intent);
             }
+
         });
 
         viewModel.getAllMovies().observe(this, movies -> {

@@ -3,7 +3,7 @@ package com.example.newestmovies.model;
 import com.google.gson.annotations.SerializedName;
 
 public class MainPojo {
-    @SerializedName("result")
+    @SerializedName("results")
     private Movies[] movies;
     private String page;
     private String total_results;

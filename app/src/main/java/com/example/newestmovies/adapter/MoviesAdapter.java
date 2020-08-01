@@ -1,5 +1,6 @@
 package com.example.newestmovies.adapter;
 
+import android.graphics.Movie;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -31,7 +32,7 @@ public class MoviesAdapter extends RecyclerView.Adapter<MoviesAdapter.ViewHolder
     }
 
     public interface MyMoviesListener {
-        void onMovieClicked(int position, View view);
+        void onMovieClicked(String title, String imagePath, String overView, View view);
     }
 
     public void setListener(MyMoviesListener listener) {
@@ -54,7 +55,8 @@ public class MoviesAdapter extends RecyclerView.Adapter<MoviesAdapter.ViewHolder
                     if(listener!=null) {
                         Log.d("tag", "holder.itemView clicked");
                         assert moviesList != null;
-                        listener.onMovieClicked(getAdapterPosition(), v);
+                        Movies movie = moviesList.get(getAdapterPosition());
+                        listener.onMovieClicked(movie.getTitle(), movie.getPoster_path(), movie.getOverView(), v);
                     }
                 }
             });

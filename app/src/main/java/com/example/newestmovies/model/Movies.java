@@ -6,7 +6,6 @@ public class Movies {
     private String popularity;
     private String vote_count;
     private String video;
-    @SerializedName("poster_path")
     private String poster_path;
     private String id;
     private String adult;

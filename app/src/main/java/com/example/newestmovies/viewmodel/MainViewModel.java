@@ -16,9 +16,9 @@ public class MainViewModel extends AndroidViewModel implements IMainViewModel {
     private IMainRepository mainRepository;
     private LiveData<List<Movies>> moviesLiveData;
 
-    public MainViewModel(@NonNull Application application, IMainRepository mainRepository) {
+    public MainViewModel(@NonNull Application application) {
         super(application);
-        this.mainRepository = mainRepository;
+        this.mainRepository = new MainRepository(application);
     }
 
     @Override
