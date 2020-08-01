@@ -4,7 +4,7 @@
     android:id="@+id/elasticButton"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@color/lightGreen2"
+    android:backgroundTint="@color/lightGreen2"
     app:contentPadding="10dp"
     android:layout_margin="5dp"
     app:cardCornerRadius="8dp"
