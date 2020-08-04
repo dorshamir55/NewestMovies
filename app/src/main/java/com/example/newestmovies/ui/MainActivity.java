@@ -5,6 +5,7 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -26,6 +27,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        SwipeRefreshLayout swipeRefreshLayout = findViewById(R.id.swipeContainer);
 
         viewModel = new ViewModelProvider(this).get(MainViewModel.class);
 
@@ -50,6 +52,17 @@ public class MainActivity extends AppCompatActivity {
                 moviesAdapter.setData(movies);
                 moviesAdapter.notifyDataSetChanged();
         });
-        viewModel.getMoviesLiveData("8e0287bdf8f164cb10683aba2e728f5c", "en-US", "1");
+        viewModel.getMoviesLiveData("8e0287bdf8f164cb10683aba2e728f5c", "en-US", "1", null);
+
+        swipeRefreshLayout.setOnRefreshListener(()->{
+            //onRefresh
+            viewModel.getMoviesLiveData("8e0287bdf8f164cb10683aba2e728f5c", "en-US", "1", ()->{
+                swipeRefreshLayout.setRefreshing(false);
+            });
+        });
+        swipeRefreshLayout.setColorSchemeResources(android.R.color.holo_blue_bright,
+                android.R.color.holo_green_light,
+                android.R.color.holo_orange_light,
+                android.R.color.holo_red_light);
     }
 }

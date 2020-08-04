@@ -2,6 +2,7 @@ package com.example.newestmovies.repository;
 
 import android.app.Application;
 import android.content.Context;
+import android.os.Handler;
 import android.widget.Toast;
 
 import androidx.lifecycle.LiveData;
@@ -15,6 +16,7 @@ import com.example.newestmovies.viewmodel.IMainViewModel;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.logging.LogRecord;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -29,7 +31,7 @@ public class MainRepository implements IMainRepository{
     }
 
     @Override
-    public void getMoviesLiveData(String apiKey, String language, String page) {
+    public void getMoviesLiveData(String apiKey, String language, String page, Runnable onFinish) {
         APIInterface apiInterface = APIClient.getRetrofitInstance().create(APIInterface.class);
         Call<MainPojo> call = apiInterface.getAllMovies(apiKey, language,page);
 
@@ -45,6 +47,15 @@ public class MainRepository implements IMainRepository{
                 Toast.makeText(context, t.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
+        Handler handler = new Handler();
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                if(onFinish != null) {
+                    onFinish.run();
+                }
+            }
+        }, 1000);
     }
 
     @Override

@@ -22,8 +22,8 @@ public class MainViewModel extends AndroidViewModel implements IMainViewModel {
     }
 
     @Override
-    public void getMoviesLiveData(String apiKey, String language, String page) {
-        mainRepository.getMoviesLiveData(apiKey, language, page);
+    public void getMoviesLiveData(String apiKey, String language, String page, Runnable onFinish) {
+        mainRepository.getMoviesLiveData(apiKey, language, page, onFinish);
     }
 
     @Override
